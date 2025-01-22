@@ -44,18 +44,13 @@ resource synWksp 'Microsoft.Synapse/workspaces@2021-06-01' = {
   }
 }
 
-// resource sbdcRole 'Microsoft.Authorization/roleDefinitions@2018-01-01-preview' existing = {
-//   scope: stgAcctForSyn
-//   name: 'ba92f5b4-2d11-453d-a403-e96b0029c9fe' // GUID for 'Storage Blob Data Contributor'
-// }
-
-// resource rasbdc 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
-//   scope: stgAcctForSyn
-//   name: guid(stgAcctForSyn.id, synWksp.id, sbdcRole.id) // I don't like it, but I'm gonna do it.  Wanted synWksp.identity.principalId in the middle, I thought.
-//   properties: {
-//     description: 'Allows ${synWksp.name} to read write to ${stgAcctForSyn.name}.'
-//     principalId: synWksp.identity.principalId
-//     principalType: 'ServicePrincipal'
-//     roleDefinitionId: synWksp.identity.principalId
-//   }
-// }
+// Create role assignment
+module sbdcRoleAssignment '201-sdbcroleassignment.bicep' = {
+  name: 'sbdc-role-assignment'
+  scope: resourceGroup()
+  params:{
+    storageAccountName: stgAcctForSyn.name
+    principalId: synWksp.identity.principalId
+    principalName: synWksp.name
+  }
+}
