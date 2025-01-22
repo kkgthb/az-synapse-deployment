@@ -41,6 +41,15 @@ resource synWksp 'Microsoft.Synapse/workspaces@2021-06-01' = {
     //   collaborationBranch: 'main'
     //   rootFolder: '/src/mysynapse'
     // }
+    // workspaceRepositoryConfiguration: {
+    //   type: 'WorkspaceVSTSConfiguration'
+    //   repositoryName: 'myRepoName'
+    //   projectName: 'myProjectName'
+    //   accountName: 'myOrgName'
+    //   tenantId: 'myADOEntraTenant'
+    //   collaborationBranch: 'main'
+    //   rootFolder: '/' // Under what folder should Synapse Studio add a folder named "integrationRuntime"?
+    // }
   }
 }
 
