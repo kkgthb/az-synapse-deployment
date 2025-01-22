@@ -48,7 +48,7 @@ resource synWksp 'Microsoft.Synapse/workspaces@2021-06-01' = {
     //   accountName: 'myOrgName'
     //   tenantId: 'myADOEntraTenant'
     //   collaborationBranch: 'main'
-    //   rootFolder: '/' // Under what folder should Synapse Studio add a folder named "integrationRuntime"?
+    //   rootFolder: '/' // Under what folder should Synapse Studio add a folder named "integrationRuntime", a folder named "pipeline", etc.?
     // }
   }
 }
