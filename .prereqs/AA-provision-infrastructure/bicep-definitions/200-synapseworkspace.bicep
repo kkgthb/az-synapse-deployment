@@ -34,13 +34,13 @@ resource synWksp 'Microsoft.Synapse/workspaces@2021-06-01' = {
       accountUrl: format(datalakeUrlFormat, stgAcctForSyn.name) // https://github.com/AzDocs/AzDocs/blob/08ccb21/src-bicep/Synapse/workspaces.bicep#L118
       filesystem: defaultDataLakeStorageFilesystemName
     }
-    workspaceRepositoryConfiguration: {
-      type: 'FactoryGitHubConfiguration'
-      repositoryName: repoName
-      accountName: repoOwner
-      collaborationBranch: 'main'
-      rootFolder: '/src/mysynapse'
-    }
+    // workspaceRepositoryConfiguration: {
+    //   type: 'FactoryGitHubConfiguration'
+    //   repositoryName: repoName
+    //   accountName: repoOwner
+    //   collaborationBranch: 'main'
+    //   rootFolder: '/src/mysynapse'
+    // }
   }
 }
 
