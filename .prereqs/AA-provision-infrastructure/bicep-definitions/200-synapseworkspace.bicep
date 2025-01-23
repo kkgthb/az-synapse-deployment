@@ -3,8 +3,11 @@ targetScope = 'resourceGroup'
 param swName string
 param swLocation string
 param saName string
-param repoName string
-param repoOwner string
+param ghRepoName string
+param ghOwner string
+param entraTenantId string
+param adoAcct string
+param adoProj string
 var defaultDataLakeStorageFilesystemName = 'synapseblob' // "The name of the default ADLS Gen2 file system for the data lake storage account. Required and can be any string."  https://github.com/AzDocs/AzDocs/blob/08ccb21/src-bicep/Synapse/workspaces.bicep#L69
 @description('The format for the data lake URL in the Synapse workspace.')
 var datalakeUrlFormat = 'https://{0}.dfs.${environment().suffixes.storage}'
@@ -36,20 +39,20 @@ resource synWksp 'Microsoft.Synapse/workspaces@2021-06-01' = {
     }
     // workspaceRepositoryConfiguration: {
     //   type: 'FactoryGitHubConfiguration'
-    //   repositoryName: repoName
-    //   accountName: repoOwner
+    //   repositoryName: ghRepoName
+    //   accountName: ghOwner
     //   collaborationBranch: 'main'
     //   rootFolder: '/src/mysynapse'
     // }
-    // workspaceRepositoryConfiguration: {
-    //   type: 'WorkspaceVSTSConfiguration'
-    //   repositoryName: 'myRepoName'
-    //   projectName: 'myProjectName'
-    //   accountName: 'myOrgName'
-    //   tenantId: 'myADOEntraTenant'
-    //   collaborationBranch: 'main'
-    //   rootFolder: '/' // Under what folder should Synapse Studio add a folder named "integrationRuntime", a folder named "pipeline", etc.?
-    // }
+    workspaceRepositoryConfiguration: {
+      type: 'WorkspaceVSTSConfiguration'
+      repositoryName: ghRepoName
+      projectName: adoProj
+      accountName: adoAcct
+      tenantId: entraTenantId
+      collaborationBranch: 'main'
+      rootFolder: '/src/mysynapse' // Under what folder should Synapse Studio add a folder named "integrationRuntime", a folder named "pipeline", etc.?
+    }
   }
 }
 

@@ -4,8 +4,11 @@ var solutionName = 'neurons'
 var location = 'centralus'
 
 param envNickname string
-param thisRepoName string
-param thisRepoOwner string
+param ghRepoName string
+param ghOwner string
+param entraTenantId string
+param adoAcct string
+param adoProj string
 
 module rsrcGrp './100-resourcegroup.bicep' = {
   name: '${solutionName}-rg-${envNickname}'
@@ -23,8 +26,11 @@ module sw './200-synapseworkspace.bicep' = {
     swName: '${solutionName}-sw-${envNickname}'
     swLocation: location
     saName: '${solutionName}sa${envNickname}'
-    repoName: thisRepoName
-    repoOwner: thisRepoOwner
+    entraTenantId: entraTenantId
+    ghRepoName: ghRepoName
+    ghOwner: ghOwner
+    adoAcct: adoAcct
+    adoProj: adoProj
   }
 }
 
