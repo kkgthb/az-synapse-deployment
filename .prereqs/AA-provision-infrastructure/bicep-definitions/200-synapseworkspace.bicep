@@ -38,21 +38,21 @@ resource synWksp 'Microsoft.Synapse/workspaces@2021-06-01' = {
       filesystem: defaultDataLakeStorageFilesystemName
     }
     // workspaceRepositoryConfiguration: {
-    //   type: 'FactoryGitHubConfiguration'
+    //   type: 'WorkspaceGitHubConfiguration'
     //   repositoryName: ghRepoName
     //   accountName: ghOwner
     //   collaborationBranch: 'main'
     //   rootFolder: '/src/mysynapse'
     // }
-    workspaceRepositoryConfiguration: {
-      type: 'WorkspaceVSTSConfiguration'
-      repositoryName: ghRepoName
-      projectName: adoProj
-      accountName: adoAcct
-      tenantId: entraTenantId
-      collaborationBranch: 'main'
-      rootFolder: '/src/mysynapse' // Under what folder should Synapse Studio add a folder named "integrationRuntime", a folder named "pipeline", etc.?
-    }
+    // workspaceRepositoryConfiguration: {
+    //   type: 'WorkspaceVSTSConfiguration'
+    //   repositoryName: ghRepoName
+    //   projectName: adoProj
+    //   accountName: adoAcct
+    //   tenantId: entraTenantId
+    //   collaborationBranch: 'main' // I can't seem to get any Bicep-based repo syncing set up because there is no way to set a publishBranch, and then Synapse Studio complains.
+    //   rootFolder: '/src/mysynapse' // Under what folder should Synapse Studio add a folder named "integrationRuntime", a folder named "pipeline", etc.?
+    // }
   }
 }
 
