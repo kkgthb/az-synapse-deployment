@@ -3,11 +3,11 @@ targetScope = 'resourceGroup'
 param swName string
 param swLocation string
 param saName string
-param ghRepoName string
-param ghOwner string
-param entraTenantId string
-param adoAcct string
-param adoProj string
+param ghRepoName string = ''
+param ghOwner string = ''
+param entraTenantId string = ''
+param adoAcct string = ''
+param adoProj string = ''
 var defaultDataLakeStorageFilesystemName = 'synapseblob' // "The name of the default ADLS Gen2 file system for the data lake storage account. Required and can be any string."  https://github.com/AzDocs/AzDocs/blob/08ccb21/src-bicep/Synapse/workspaces.bicep#L69
 @description('The format for the data lake URL in the Synapse workspace.')
 var datalakeUrlFormat = 'https://{0}.dfs.${environment().suffixes.storage}'

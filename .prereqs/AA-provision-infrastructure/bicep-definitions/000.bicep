@@ -4,11 +4,11 @@ var solutionName = 'neurons'
 var location = 'centralus'
 
 param envNickname string
-param ghRepoName string
-param ghOwner string
-param entraTenantId string
-param adoAcct string
-param adoProj string
+param ghRepoName string = ''
+param ghOwner string = ''
+param entraTenantId string = ''
+param adoAcct string = ''
+param adoProj string = ''
 
 module rsrcGrp './100-resourcegroup.bicep' = {
   name: '${solutionName}-rg-${envNickname}'
