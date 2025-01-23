@@ -42,7 +42,7 @@ resource synWksp 'Microsoft.Synapse/workspaces@2021-06-01' = {
     //   repositoryName: ghRepoName
     //   accountName: ghOwner
     //   collaborationBranch: 'main'
-    //   rootFolder: '/src/mysynapse'
+    //   rootFolder: '/src/mysynapse/'
     // }
     // workspaceRepositoryConfiguration: {
     //   type: 'WorkspaceVSTSConfiguration'
@@ -50,8 +50,8 @@ resource synWksp 'Microsoft.Synapse/workspaces@2021-06-01' = {
     //   projectName: adoProj
     //   accountName: adoAcct
     //   tenantId: entraTenantId
-    //   collaborationBranch: 'main' // I can't seem to get any Bicep-based repo syncing set up because there is no way to set a publishBranch, and then Synapse Studio complains.
-    //   rootFolder: '/src/mysynapse' // Under what folder should Synapse Studio add a folder named "integrationRuntime", a folder named "pipeline", etc.?
+    //   collaborationBranch: 'main' // I can't seem to get any Bicep-based repo syncing set up because there is no way to set a publishBranch, and then Synapse Studio complains.  Oh.  Wait.  Is it that the top Synapsey folder doesn't have a "publish_config.json" file in it reading '{"publishBranch":"workspace_publish","enableGitComment":true}'?
+    //   rootFolder: '/src/mysynapse/' // Under what folder should Synapse Studio add a folder named "integrationRuntime", a folder named "pipeline", etc.?
     // }
   }
 }

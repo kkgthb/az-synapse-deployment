@@ -1,0 +1,13 @@
+{
+    "Microsoft.Synapse/workspaces/linkedServices": {
+        "AzureKeyVault": {
+            "properties": {
+                "parameters": {
+                    "kv_current_env": {
+                        "defaultValue": "|:defaultValue:secureString"
+                    }
+                }
+            }
+        }
+    }
+}

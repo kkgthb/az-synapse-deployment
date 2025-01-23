@@ -1,0 +1,31 @@
+name: "Publish a Synapse Workspace to various environments"
+
+trigger:
+  branches:
+    include:
+    - main
+  paths:
+    include:
+    - 'src/mysynapse/*' # Only trigger if Synapse itself changes, not this repo's README, etc.
+
+pool:
+  vmImage: "ubuntu-latest"
+
+stages:
+  - stage: 'deploy_stage_prd'
+    displayName: 'Deploy stage (prd)'
+    jobs:
+      - job: 'deploy_job_prd'
+        displayName: 'Deploy job (prd)'
+        steps:
+          - task: 'Synapse workspace deployment@2'
+            inputs:
+              operation: 'validateDeploy'
+              azureSubscription: 'MYSERVICECONNECTIONNAME'
+              resourceGroupName: 'neurons-rg-prd'
+              targetWorkspaceName: 'neurons-sw-prd'
+              DeleteArtifactsNotInTemplate: true
+              overrideParameters: >
+                - 'workspaceName' 'neurons-sw-prd'
+                - 'Example link to a key vault_properties_parameters_kv_current_env_defaultValue' 'prd'
+              ArtifactsFolder: '$(System.DefaultWorkingDirectory)/src/mysynapse/'
