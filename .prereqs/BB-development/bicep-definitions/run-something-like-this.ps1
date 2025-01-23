@@ -5,3 +5,11 @@
 
 # Ditto Synapse RBAC role assignments, apparently.
 # https://github.com/Azure/ResourceModules/issues/1972
+
+# No global parameters yet
+# https://learn.microsoft.com/en-us/answers/questions/145623/global-parameters-in-azure-synapse-workspace
+
+# Maybe the ClientIpAddressNotAuthorized error is _my_ actual workstation?
+# https://stackoverflow.com/questions/78728272/azure-devops-release-pipeline-has-suddenly-started-failing
+# https://www.google.com/search?q=ClientIpAddressNotAuthorized
+# https://learn.microsoft.com/en-us/answers/questions/1791964/error-while-creating-linked-service-from-synapse-t shows some promise, but it's late and I already killed off the RG for cost.

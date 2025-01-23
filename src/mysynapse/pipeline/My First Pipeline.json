@@ -1,0 +1,21 @@
+{
+  "name": "My First Pipeline",
+  "description": "I am a pipeline that sends a pizza flavor to Postman Echo",
+  "type": "Microsoft.Synapse/workspaces/pipelines",
+  "properties": {
+    "activities": [
+      {
+        "name": "Demo Web Call",
+        "description": "I am a web call.  Yay.",
+        "type": "WebActivity",
+        "typeProperties": {
+          "method": "GET",
+          "url": {
+            "type": "Expression",
+            "value": "https://postman-echo.com/get?hello=@{pipeline().Pipeline}"
+          }
+        }
+      }
+    ]
+  }
+}
