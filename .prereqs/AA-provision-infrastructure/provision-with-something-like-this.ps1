@@ -22,7 +22,7 @@ $temporary_dev_file_path_bicep_params = "tempfilebcdev.json"
     }
 } | ConvertTo-Json -Depth 10 | Out-File $temporary_dev_file_path_bicep_params
 az deployment sub create `
-    --name 'neurons-infra-prd' `
+    --name 'neurons-infra-dev' `
     --subscription 'Visual Studio Professional Subscription' `
     --location 'centralus' `
     --template-file ([IO.Path]::Combine((Split-Path -Path $PSCommandPath -Parent), 'bicep-definitions', '000.bicep')) `
