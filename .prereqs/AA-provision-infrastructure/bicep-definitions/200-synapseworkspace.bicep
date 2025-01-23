@@ -53,6 +53,8 @@ resource synWksp 'Microsoft.Synapse/workspaces@2021-06-01' = {
   }
 }
 
+output principalId string = synWksp.identity.principalId
+
 // Create role assignment
 module sbdcRoleAssignment '201-sdbcroleassignment.bicep' = {
   name: 'sbdc-role-assignment'

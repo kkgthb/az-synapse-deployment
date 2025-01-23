@@ -16,7 +16,7 @@ module rsrcGrp './100-resourcegroup.bicep' = {
   }
 }
 
-module dc './200-synapseworkspace.bicep' = {
+module sw './200-synapseworkspace.bicep' = {
   name: '${solutionName}-sw-${envNickname}'
   scope: resourceGroup(rsrcGrp.name)
   params: {
@@ -25,5 +25,17 @@ module dc './200-synapseworkspace.bicep' = {
     saName: '${solutionName}sa${envNickname}'
     repoName: thisRepoName
     repoOwner: thisRepoOwner
+  }
+}
+
+module kv './230-keyvault.bicep' = {
+  name: '${solutionName}-kv-${envNickname}'
+  scope: resourceGroup(rsrcGrp.name)
+  params: {
+    keyVaultName: '${solutionName}-kv-${envNickname}'
+    keyVaultEnvNickname: envNickname
+    keyVaultLocation: location
+    consumingSynapseWorkspacePrincipalId: sw.outputs.principalId
+    consumingSynapseWorkspaceName: sw.name
   }
 }
