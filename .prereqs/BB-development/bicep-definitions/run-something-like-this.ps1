@@ -1,9 +1,9 @@
-$SubscriptionName = 'Visual Studio Professional Subscription'
+$EnvNickname = 'dev'
 $SolutionName = 'neurons'
+$SubscriptionName = 'Visual Studio Professional Subscription'
 $Location = 'centralus'
 $ResourceGroupName = "$SolutionName-rg-$EnvNickname"
 $SynapseWorkspaceName = "$SolutionName-sw-$EnvNickname"
-$EnvNickname = 'prd'
 
 $LinkedServiceExpectedData = @{
     'name'       = "Example link to a key vault"
